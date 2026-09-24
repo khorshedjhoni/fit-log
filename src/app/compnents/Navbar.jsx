@@ -1,15 +1,15 @@
 import React from 'react';
 import logoImg from '@/assests/logo.png';
 import Image from 'next/image';
-
+import Link from 'next/link';
 const Navbar = () => {
 
   const links=<>
   <li>
-    <a>WorksOut</a>
+    <Link href="/library">WorksOut</Link>
   </li>
   <li>
-    <a>My Plan</a>
+    <Link href="/my-plan">My Plan</Link>
   </li>
   </>
     return (
@@ -29,7 +29,9 @@ const Navbar = () => {
       </ul>
     </div>
      <Image src={logoImg} alt="Logo" width={30} height={30} />
-    <a className="btn btn-ghost text-xl">FITLOG</a>
+    <Link href="/" className="btn btn-ghost text-xl">
+      FITLOG
+    </Link>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1">
