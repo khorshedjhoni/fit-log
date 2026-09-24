@@ -1,3 +1,5 @@
+import PlanButton from '@/app/compnents/PlanButton';
+import SaveButton from '@/app/compnents/SaveButton';
 import Image from 'next/image';
 import React from 'react';
 
@@ -114,12 +116,8 @@ const WorksOutDetails = async({params}) => {
 
         
           <div className="flex flex-col sm:flex-row gap-3 pt-4">
-            <button className="flex-1 bg-[#CCFF00] hover:bg-[#b8e600] active:scale-95 text-black font-extrabold text-xs uppercase py-3.5 px-4 rounded-lg transition-all text-center">
-              Add to todays plan
-            </button>
-            <button className="flex-1 bg-transparent hover:bg-zinc-800/60 active:scale-95 text-white font-bold text-xs uppercase py-3.5 px-4 rounded-lg border border-zinc-700 transition-all text-center">
-              Save for later
-            </button>
+           <PlanButton workout={workoutDetails}></PlanButton>
+            <SaveButton workout={workoutDetails}></SaveButton>
           </div>
 
         </div>
