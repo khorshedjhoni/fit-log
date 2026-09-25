@@ -1,6 +1,8 @@
 import Link from "next/link";
 import React from "react";
 import Image from "next/image";
+import { FiClock } from "react-icons/fi";
+import { FaFire, FaStar } from "react-icons/fa";
 
 const WorkoutCard = ({ workout }) => {
   return (
@@ -36,12 +38,21 @@ const WorkoutCard = ({ workout }) => {
           <div className="my-4 border-t border-white/5"></div>
 
           <div className="flex items-center gap-4 text-xs text-gray-400">
-            <span>◷ {workout.duration} min</span>
+  <span className="flex items-center gap-1">
+    <FiClock className="text-lime-400" />
+    {workout.duration} min
+  </span>
 
-            <span>● {workout.caloriesBurned} kcal</span>
+  <span className="flex items-center gap-1">
+    <FaFire className="text-lime-400" />
+    {workout.caloriesBurned} kcal
+  </span>
 
-            <span>☆ {workout.rating}</span>
-          </div>
+  <span className="flex items-center gap-1">
+    <FaStar className="text-lime-400" />
+    {workout.rating}
+  </span>
+</div>
         </div>
       </div>
     </Link>

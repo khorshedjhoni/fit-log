@@ -12,7 +12,7 @@ const Navbar = () => {
   const pathname = usePathname();
 
   const navItems = [
-    { name: 'Workout', path: '/' },
+    { name: 'Workout', path: '/workouts' },
     { name: 'My Plan', path: '/my-plan' },
   ];
 
@@ -82,7 +82,7 @@ const Navbar = () => {
         <div className="navbar-end flex items-center gap-4">
       
         <Link
-          href="/my-plan"
+          href="/my-plan?tab=todaysPlan"
           className="flex items-center gap-2 text-sm font-bold text-zinc-300 hover:text-white transition-colors"
         >
           <span>Plan</span>

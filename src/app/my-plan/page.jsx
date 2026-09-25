@@ -5,15 +5,23 @@ import { WorkOutsContext } from '@/Context/WorkOutsContext';
 import Link from 'next/link';
 import TodaysPlan from '../compnents/TodaysPlan';
 import SavePlan from '../compnents/SavePlan';
+import { useSearchParams } from "next/navigation";
 
 
 
 const MyPlanPage = () => {
 
-    const {plansWorkouts, setPlansWorkouts} = useContext(WorkOutsContext);
-    const {savedWorkouts, setSavedWorkouts} = useContext(WorkOutsContext);
+    const searchParams = useSearchParams();
 
-    const [activeTab, setActiveTab] =useState('todaysPlan');
+    const {plansWorkouts} = useContext(WorkOutsContext);
+    const {savedWorkouts} = useContext(WorkOutsContext);
+
+     const tab = searchParams.get("tab");
+
+  const [activeTab, setActiveTab] = useState(
+    tab === "saved" ? "saved" : "todaysPlan"
+  );
+
     const [sortBy, setSortBy] = useState('Duration');
 
     const currentTabWorkouts = activeTab === 'todaysPlan' ? plansWorkouts : savedWorkouts;

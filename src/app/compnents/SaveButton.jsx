@@ -4,6 +4,8 @@ import { WorkOutsContext } from '@/Context/WorkOutsContext';
 import Link from 'next/link';
 
 import React,{useContext} from 'react';
+import { FiBookmark, FiCalendar } from 'react-icons/fi';
+import { MdSave } from 'react-icons/md';
 import { toast } from 'react-toastify';
 
 const SaveButton = ({ workout }) => {
@@ -42,11 +44,13 @@ const SaveButton = ({ workout }) => {
     };
     return (
         <div>
-             <Link href="/my-plan">
-                <button onClick={handleSaveWorkout} className="flex-1 bg-transparent hover:bg-zinc-800/60 active:scale-95 text-white font-bold text-xs uppercase py-3.5 px-4 rounded-lg border border-zinc-700 transition-all text-center">
+             
+                <button onClick={handleSaveWorkout}
+                 className="flex-1 inline-flex items-center justify-center gap-2 bg-zinc-900/80 hover:bg-zinc-800 active:scale-95 text-white font-extrabold text-xs  py-3.5 px-5 rounded-xl border border-zinc-800 transition-all duration-150 cursor-pointer">
+                  <FiBookmark className="w-4 h-4 stroke-[2.5]" />
                   Save for later
                 </button>
-             </Link>
+            
         </div>
     );
 };
