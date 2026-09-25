@@ -6,7 +6,6 @@ import React,{useContext} from 'react';
 import { FiClock, FiX } from "react-icons/fi";
 import { FaFire } from "react-icons/fa";
 import { FaStar } from "react-icons/fa";
-import { FaCheck } from "react-icons/fa";
 import { WorkOutsContext } from "@/Context/WorkOutsContext";
 import { toast } from "react-toastify";
 

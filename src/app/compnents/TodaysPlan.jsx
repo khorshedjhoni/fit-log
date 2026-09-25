@@ -101,6 +101,7 @@ const TodaysPlan = ({ workout }) => {
 
         <Link
           href={`/library/${workout.id}`}
+    
           className="rounded-full border border-white/15 px-3 py-1.5 text-[10px] text-gray-300 transition hover:border-white/30 hover:text-white"
         >
           View Details

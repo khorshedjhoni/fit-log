@@ -7,7 +7,7 @@ const WorkoutCard = ({ workout }) => {
         <Link href={`/library/${workout.id}`}>
       <div className="group overflow-hidden rounded-xl border border-white/10 bg-[#15171c] transition-all duration-300 hover:-translate-y-1 hover:border-lime-400/50 hover:shadow-xl">
 
-        {/* Image */}
+
         <div className="relative h-48 w-full overflow-hidden">
           <Image
             src={workout.image}
@@ -17,10 +17,10 @@ const WorkoutCard = ({ workout }) => {
           />
         </div>
 
-        {/* Content */}
+        
         <div className="p-5">
 
-          {/* Muscle Groups */}
+      
           <div className="mb-3 flex flex-wrap gap-2">
             {workout.muscleGroups.map((muscle) => (
               <span
@@ -32,20 +32,20 @@ const WorkoutCard = ({ workout }) => {
             ))}
           </div>
 
-          {/* Workout name */}
+          
           <h2 className="text-lg font-bold uppercase tracking-wide text-white">
             {workout.name}
           </h2>
 
-          {/* Equipment */}
+      
           <p className="mt-1 text-sm text-gray-500">
             {workout.equipment}
           </p>
 
-          {/* Divider */}
+      
           <div className="my-4 border-t border-white/5"></div>
 
-          {/* Stats */}
+        
           <div className="flex items-center gap-4 text-xs text-gray-400">
 
             <span>
