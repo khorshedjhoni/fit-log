@@ -10,7 +10,14 @@ const MyPlanPage = () => {
 
     const {plansWorkouts, setPlansWorkouts} = useContext(WorkOutsContext);
     const {savedWorkouts, setSavedWorkouts} = useContext(WorkOutsContext);
-
+    let TotalCalories = 0;
+    let TotalDuration = 0;
+    let TotalMinutes = 0;
+    plansWorkouts.forEach((workout) => {
+        TotalCalories += workout.caloriesBurned;
+        TotalDuration += workout.duration;
+        TotalMinutes += workout.duration;
+    });
     return (
         <div className="w-full max-w-5xl mx-auto px-4 py-8 md:py-12 text-white">
             {/* Header */}
@@ -27,15 +34,15 @@ const MyPlanPage = () => {
       <div className="grid grid-cols-3 gap-4 mb-8 bg-[#18181C] p-6 rounded-2xl border border-zinc-800/80">
         <div className="text-left">
           <p className="text-zinc-500 text-xs font-semibold uppercase tracking-wider">Exercises</p>
-          <p className="text-3xl sm:text-4xl font-black text-white mt-1 font-oswald">{"20"}</p>
+          <p className="text-3xl sm:text-4xl font-black text-white mt-1 font-oswald">{plansWorkouts.length}</p>
         </div>
         <div className="text-left border-l border-zinc-800 pl-4 sm:pl-8">
           <p className="text-zinc-500 text-xs font-semibold uppercase tracking-wider">Minutes</p>
-          <p className="text-3xl sm:text-4xl font-black text-white mt-1 font-oswald">{"60"}</p>
+          <p className="text-3xl sm:text-4xl font-black text-white mt-1 font-oswald">{TotalMinutes}</p>
         </div>
         <div className="text-left border-l border-zinc-800 pl-4 sm:pl-8">
           <p className="text-zinc-500 text-xs font-semibold uppercase tracking-wider">Calories</p>
-          <p className="text-3xl sm:text-4xl font-black text-white mt-1 font-oswald">{"300"}</p>
+          <p className="text-3xl sm:text-4xl font-black text-white mt-1 font-oswald">{TotalCalories}</p>
         </div>
       </div>
    
