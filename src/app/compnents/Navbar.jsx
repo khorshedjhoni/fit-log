@@ -12,13 +12,13 @@ const Navbar = () => {
   const pathname = usePathname();
 
   const navItems = [
-    { name: 'Workout', path: '/workouts' },
+    { name: 'Workout', path: '/' },
     { name: 'My Plan', path: '/my-plan' },
   ];
 
   
   return (
-    <div className="navbar bg-base-100 shadow-sm">
+    <div className="navbar bg-base-100 shadow-sm sticky top-0 z-50 w-full bg-background">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
