@@ -2,6 +2,8 @@
 
 import React ,{useContext} from 'react';
 import { WorkOutsContext } from '@/Context/WorkOutsContext';
+import Link from 'next/link';
+import TodaysPlan from '../compnents/TodaysPlan';
 
 const MyPlanPage = () => {
 
@@ -20,7 +22,7 @@ const MyPlanPage = () => {
         </p>
       </div>
 
-      {/* Metrics Summary Row */}
+   
       <div className="grid grid-cols-3 gap-4 mb-8 bg-[#18181C] p-6 rounded-2xl border border-zinc-800/80">
         <div className="text-left">
           <p className="text-zinc-500 text-xs font-semibold uppercase tracking-wider">Exercises</p>
@@ -35,11 +37,41 @@ const MyPlanPage = () => {
           <p className="text-3xl sm:text-4xl font-black text-white mt-1 font-oswald">{"300"}</p>
         </div>
       </div>
-      {/* name of each tab group should be unique */}
+   
         <div className ="flex justify-between">
             <div className="tabs tabs-lift">
   <input type="radio" name="my_tabs_3" className="tab" aria-label="Toadys plan" defaultChecked/>
-  <div className="tab-content bg-base-100 border-base-300 p-6">Tab content 1</div>
+  <div className="tab-content bg-base-100 border-base-300 p-6">
+    {
+        plansWorkouts.length === 0 ? (
+            <div className="w-full bg-[#121316] rounded-2xl border border-zinc-800/80 p-12 sm:p-16 flex flex-col items-center justify-center text-center my-6">
+
+      <h2 className="text-xl sm:text-2xl font-black uppercase text-white tracking-wider font-oswald">
+        NOTHING HERE YET
+      </h2>
+
+      
+      <p className="text-zinc-400 text-xs sm:text-sm mt-2 max-w-sm font-normal">
+        Browse the library and add a lift to get today moving.
+      </p>
+
+      
+      <Link
+        href="/"
+        className="mt-6 bg-[#CCFF00] hover:bg-[#b8e600] active:scale-95 text-black font-extrabold text-xs uppercase px-6 py-3 rounded-lg transition-all duration-150 shadow-md inline-block"
+      >
+        Go to workouts
+      </Link>
+    </div>
+        ) : (
+            <ul className="space-y-4">
+                {plansWorkouts.map((workout, index) => (
+                   <TodaysPlan key={index} workout={workout}></TodaysPlan>
+                ))}
+            </ul>
+        )
+    }
+  </div>
 
   <input type="radio" name="my_tabs_3" className="tab" aria-label="Saved"  />
   <div className="tab-content bg-base-100 border-base-300 p-6">Tab content 2</div>
