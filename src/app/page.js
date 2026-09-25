@@ -1,5 +1,5 @@
 import React from 'react';
-import LibraryPage from './library/page';
+import LibraryPage from './workouts/page';
 import Banner from './compnents/Banner';
 
 const page = () => {

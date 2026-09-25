@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import React from 'react';
 import bannerImg from '@/assests/banner.png';
+import { MdArrowDownward } from 'react-icons/md';
 const Banner = () => {
     return (
         
@@ -18,7 +19,7 @@ const Banner = () => {
           </span>
 
     
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white uppercase tracking-tight leading-[1.08]">
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white uppercase tracking-tight leading-[1.08] font-[Oswald]">
             Train with intent. <br className="hidden sm:inline" />
             Log every set.
           </h1>
@@ -30,9 +31,13 @@ const Banner = () => {
 
           
           <div className="pt-2 w-full sm:w-auto">
-            <button className="w-full sm:w-auto bg-[#CCFF00] hover:bg-[#b8e600] active:scale-95 text-black font-extrabold text-sm uppercase px-8 py-3.5 rounded-lg transition-all duration-150">
-              Browse Workouts
-            </button>
+            <a
+              href="#library"
+              className="inline-flex items-center justify-center gap-2 w-full sm:w-auto bg-[#CCFF00] hover:bg-[#b8e600] active:scale-95 text-black font-extrabold text-sm uppercase px-8 py-3.5 rounded-lg transition-all duration-150"
+            >
+              BROWSE WORKOUTS
+              <MdArrowDownward />
+            </a>
           </div>
         </div>
 

@@ -21,7 +21,7 @@ const LibraryPage = async () => {
 
     const workouts = await getLibraryData();
     return (
-        <div className="min-h-screen bg-[#0d0f12]  rounded-2xl text-white w-full max-w-6xl mx-auto px-4 py-4 sm:py-6">
+        <div id="library" className="min-h-screen bg-[#0d0f12]  rounded-2xl text-white w-full max-w-6xl mx-auto px-4 py-4 sm:py-6">
             <div className="mx-auto max-w-7xl">
                 <div className="mb-7">
                     <h1 className="text-3xl font-black tracking-tight">
