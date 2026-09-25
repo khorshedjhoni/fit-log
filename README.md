@@ -16,7 +16,7 @@ FitLog is a modern, responsive web application designed for fitness enthusiasts 
 
 ## ✨ Key Features
 
-1. **Interactive Workout Library:** Browse a 3x4 grid of exercises showcasing target muscle groups, required equipment, rating, estimated duration, and burned calories.
+1. **Interactive Workout Library:** Grid of exercises showcasing target muscle groups, required equipment, rating, estimated duration, and burned calories.
 2. **Detailed Exercise Guides:** Access rich workout breakdown pages complete with step-by-step instructions, equipment details, difficulty metrics, and media illustrations.
 3. **Daily Routine Planner:** Add lifts directly to "Today's Plan" or save them for later, backed by instant counter badges on the navigation bar.
 4. **Dynamic Metrics Tracker:** Real-time dashboard calculating total exercises, accumulated duration (in minutes), and total estimated calorie burn for planned workouts.
