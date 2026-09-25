@@ -4,6 +4,7 @@ import { WorkOutsContext } from '@/Context/WorkOutsContext';
 import Link from 'next/link';
 
 import React,{useContext} from 'react';
+import { toast } from 'react-toastify';
 
 
 const PlanButton = ({ workout }) => {
@@ -11,13 +12,32 @@ const PlanButton = ({ workout }) => {
     const {plansWorkouts, setPlansWorkouts} = useContext(WorkOutsContext);
 
     const handleAddToPlan = () => {
-        // Check if the workout is already in the plan
+        
         const isAlreadyInPlan = plansWorkouts.some((item) => item.id === workout.id);   
         if (!isAlreadyInPlan) {
             setPlansWorkouts([...plansWorkouts, workout]);
+            toast.success("Workout added to today's plan!", {
+                position: "top-right",
+                autoClose: 3000,    
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true, 
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+            });
         }
         else {
-            alert("Workout is already in the plan!");
+            toast.info("Workout is already in the plan!", {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+            });
         }
     };
     return (

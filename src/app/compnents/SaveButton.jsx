@@ -4,20 +4,40 @@ import { WorkOutsContext } from '@/Context/WorkOutsContext';
 import Link from 'next/link';
 
 import React,{useContext} from 'react';
+import { toast } from 'react-toastify';
 
 const SaveButton = ({ workout }) => {
     const {savedWorkouts, setSavedWorkouts} = useContext(WorkOutsContext);
 
     const handleSaveWorkout = () => {
-        // Check if the workout is already saved
+        
         const isWorkoutSaved = savedWorkouts.some(
             (savedWorkout) => savedWorkout.id === workout.id
         );
         if (!isWorkoutSaved) {
             setSavedWorkouts([...savedWorkouts, workout]);
+            toast.success("Workout saved for later!", {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+            });
         }
         else {
-            alert("Workout is already saved!");
+            toast.info("Workout is already saved!", {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+            });
         }
     };
     return (

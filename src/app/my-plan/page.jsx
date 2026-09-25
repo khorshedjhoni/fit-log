@@ -6,6 +6,8 @@ import Link from 'next/link';
 import TodaysPlan from '../compnents/TodaysPlan';
 import SavePlan from '../compnents/SavePlan';
 
+
+
 const MyPlanPage = () => {
 
     const {plansWorkouts, setPlansWorkouts} = useContext(WorkOutsContext);
@@ -21,9 +23,22 @@ const MyPlanPage = () => {
         TotalCalories += workout.caloriesBurned;
         TotalMinutes += workout.duration;
     });
+
+    const sortedWorkouts = [...currentTabWorkouts].sort((a, b) => {
+    if (sortBy === 'Duration') {
+      return (Number(b.duration) || 0) - (Number(a.duration) || 0);
+    }
+    if (sortBy === 'Calories') {
+      return (Number(b.caloriesBurned) || 0) - (Number(a.caloriesBurned) || 0);
+    }
+    if (sortBy === 'Rating') {
+      return (Number(b.rating) || 0) - (Number(a.rating) || 0);
+    }
+    return 0;
+  });
     return (
         <div className="w-full max-w-5xl mx-auto px-4 py-8 md:py-12 text-white">
-            {/* Header */}
+            
       <div className="mb-8">
         <h1 className="text-3xl sm:text-4xl font-extrabold uppercase tracking-tight text-white font-oswald">
           MY PLAN
@@ -49,7 +64,7 @@ const MyPlanPage = () => {
         </div>
       </div>
    
-        {/* <div className ="flex justify-between"> */}
+        
             <div className="tabs tabs-lift w-full">
   <input
   type="radio"
@@ -83,8 +98,8 @@ const MyPlanPage = () => {
     </div>
         ) : (
             <ul className="space-y-4">
-                {plansWorkouts.map((workout, index) => (
-                   <TodaysPlan key={index} workout={workout}></TodaysPlan>
+                {sortedWorkouts.map((workout) => (
+                   <TodaysPlan key={workout.id} workout={workout}></TodaysPlan>
                 ))}
             </ul>
         )
@@ -126,28 +141,28 @@ const MyPlanPage = () => {
     </div>
         ) : (
             <ul className="space-y-4">
-                {savedWorkouts.map((workout, index) => (
-                    <SavePlan key={index} workout={workout} />
+                {sortedWorkouts.map((workout) => (
+                    <SavePlan key={workout.id} workout={workout} />
                 ))}
             </ul>
         )
     }
   </div>
   <div className="ml-auto flex items-center gap-2 pb-2">
-    <label htmlFor="sort-select" className="text-sm font-medium whitespace-nowrap text-zinc-400">
-      Sort By
-    </label>
-    <select 
-      id="sort-select"
-      defaultValue="Duration" 
-      className="select select-sm select-bordered bg-[#18181C] text-white border-zinc-800"
-      onChange={(e) => handleSortChange(e.target.value)}
-    >
-      <option value="Duration">Duration</option>
-      <option value="Calories">Calories</option>
-      <option value="Rating">Rating</option>
-    </select>
-  </div>
+          <label htmlFor="sort-select" className="text-sm font-medium whitespace-nowrap text-zinc-400">
+            Sort By
+          </label>
+          <select 
+            id="sort-select"
+            value={sortBy} 
+            className="select select-sm select-bordered bg-[#18181C] text-white border-zinc-800"
+            onChange={(e) => setSortBy(e.target.value)}
+          >
+            <option value="Duration">Duration</option>
+            <option value="Calories">Calories</option>
+            <option value="Rating">Rating</option>
+          </select>
+        </div>
 
 </div>
 
