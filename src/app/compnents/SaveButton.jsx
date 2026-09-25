@@ -5,7 +5,6 @@ import Link from 'next/link';
 
 import React,{useContext} from 'react';
 import { FiBookmark, FiCalendar } from 'react-icons/fi';
-import { MdSave } from 'react-icons/md';
 import { toast } from 'react-toastify';
 
 const SaveButton = ({ workout }) => {
