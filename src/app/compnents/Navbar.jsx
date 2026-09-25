@@ -49,7 +49,7 @@ const Navbar = () => {
     
           {/* Plan Badge */}
           <Link
-            href="/my-plan/TodaysPlan"
+            href="/my-plan"
             className="flex items-center gap-2 text-sm font-bold text-zinc-300 hover:text-white transition-colors px-6"
           >
             <span>Plan</span>

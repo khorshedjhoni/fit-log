@@ -1,6 +1,6 @@
 'use client';
 
-import React ,{useContext} from 'react';
+import React ,{useContext, useState} from 'react';
 import { WorkOutsContext } from '@/Context/WorkOutsContext';
 import Link from 'next/link';
 import TodaysPlan from '../compnents/TodaysPlan';
@@ -10,12 +10,15 @@ const MyPlanPage = () => {
 
     const {plansWorkouts, setPlansWorkouts} = useContext(WorkOutsContext);
     const {savedWorkouts, setSavedWorkouts} = useContext(WorkOutsContext);
+
+    const [activeTab, setActiveTab] =useState('todaysPlan');
+    const [sortBy, setSortBy] = useState('Duration');
+
+    const currentTabWorkouts = activeTab === 'todaysPlan' ? plansWorkouts : savedWorkouts;
     let TotalCalories = 0;
-    let TotalDuration = 0;
     let TotalMinutes = 0;
-    plansWorkouts.forEach((workout) => {
+    currentTabWorkouts.forEach((workout) => {
         TotalCalories += workout.caloriesBurned;
-        TotalDuration += workout.duration;
         TotalMinutes += workout.duration;
     });
     return (
@@ -34,7 +37,7 @@ const MyPlanPage = () => {
       <div className="grid grid-cols-3 gap-4 mb-8 bg-[#18181C] p-6 rounded-2xl border border-zinc-800/80">
         <div className="text-left">
           <p className="text-zinc-500 text-xs font-semibold uppercase tracking-wider">Exercises</p>
-          <p className="text-3xl sm:text-4xl font-black text-white mt-1 font-oswald">{plansWorkouts.length}</p>
+          <p className="text-3xl sm:text-4xl font-black text-white mt-1 font-oswald">{currentTabWorkouts.length}</p>
         </div>
         <div className="text-left border-l border-zinc-800 pl-4 sm:pl-8">
           <p className="text-zinc-500 text-xs font-semibold uppercase tracking-wider">Minutes</p>
@@ -48,7 +51,14 @@ const MyPlanPage = () => {
    
         {/* <div className ="flex justify-between"> */}
             <div className="tabs tabs-lift w-full">
-  <input type="radio" name="my_tabs_3" className="tab" aria-label="Toadys plan" defaultChecked/>
+  <input
+  type="radio"
+  name="my_tabs_3"
+  className="tab"
+  aria-label="Today's Plan"
+  checked={activeTab === "todaysPlan"}
+  onChange={() => setActiveTab("todaysPlan")}
+/>
   <div className="tab-content bg-base-100 border-base-300 p-6">
     {
         plansWorkouts.length === 0 ? (
@@ -83,7 +93,14 @@ const MyPlanPage = () => {
 
   </div>
 
-  <input type="radio" name="my_tabs_3" className="tab" aria-label="Saved"  />
+  <input
+  type="radio"
+  name="my_tabs_3"
+  className="tab"
+  aria-label="Saved"
+  checked={activeTab === "saved"}
+  onChange={() => setActiveTab("saved")}
+/>
   <div className="tab-content bg-base-100 border-base-300 p-6">
 
     {
