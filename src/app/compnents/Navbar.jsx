@@ -1,8 +1,14 @@
-import React from 'react';
+'use client'
+
+import React, { useContext } from 'react';
 import logoImg from '@/assests/logo.png';
 import Image from 'next/image';
 import Link from 'next/link';
+import { WorkOutsContext } from '@/Context/WorkOutsContext';
 const Navbar = () => {
+
+  const {plansWorkouts,setPlansWorkouts} = useContext(WorkOutsContext);
+  const {savedWorkouts, setSavedWorkouts} = useContext(WorkOutsContext);
 
   const links=<>
   <li>
@@ -39,9 +45,29 @@ const Navbar = () => {
 
     </ul>
   </div>
-  <div className="navbar-end">
-    <a className="btn">Plan</a>
-    <a className="btn">Saved</a>
+  <div className="navbar-end px-2">
+    
+          {/* Plan Badge */}
+          <Link
+            href="/my-plan/TodaysPlan"
+            className="flex items-center gap-2 text-sm font-bold text-zinc-300 hover:text-white transition-colors px-6"
+          >
+            <span>Plan</span>
+            <span className="w-5 h-5 rounded-full bg-[#CCFF00] text-black text-xs font-black flex items-center justify-center leading-none">
+              {plansWorkouts.length}
+            </span>
+          </Link>
+
+          {/* Saved Badge */}
+          <Link
+            href="/my-plan?tab=saved"
+            className="flex items-center gap-2 text-sm font-bold text-zinc-300 hover:text-white transition-colors"
+          >
+            <span>Saved</span>
+            <span className="w-5 h-5 rounded-full bg-[#CCFF00] text-black text-xs font-black flex items-center justify-center leading-none">
+              {savedWorkouts.length}
+            </span>
+          </Link>
   </div>
 </div>
     );

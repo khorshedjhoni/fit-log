@@ -7,22 +7,20 @@ import { FiClock, FiX } from "react-icons/fi";
 import { FaFire } from "react-icons/fa";
 import { FaStar } from "react-icons/fa";
 import { FaCheck } from "react-icons/fa";
-
 import { WorkOutsContext } from "@/Context/WorkOutsContext";
 
-const TodaysPlan = ({ workout }) => {
-
-    const {plansWorkouts,setPlansWorkouts} = useContext(WorkOutsContext);
+const SavePlan = ({workout}) => {
+    const {savedWorkouts,setSavedWorkouts} = useContext(WorkOutsContext);
 
     const handleDeleteWorkout = () => {
-        const updatedPlansWorkouts = plansWorkouts.filter(
-            (plansWorkout) => plansWorkout.id !== workout.id
+        const updatedSavedWorkouts = savedWorkouts.filter(
+            (savedWorkout) => savedWorkout.id !== workout.id
         );
-        setPlansWorkouts(updatedPlansWorkouts);
-    };
+        setSavedWorkouts(updatedSavedWorkouts);
+    }
     return (
-        
-            <div className="flex items-center gap-4 rounded-xl border border-white/10 bg-[#15181e] p-3 transition duration-300 hover:border-white/20">
+        <div>
+                   <div className="flex items-center gap-4 rounded-xl border border-white/10 bg-[#15181e] p-3 transition duration-300 hover:border-white/20">
       
       {/* Workout Image */}
       <div className="relative h-14 w-24 shrink-0 overflow-hidden rounded-lg">
@@ -94,8 +92,8 @@ const TodaysPlan = ({ workout }) => {
 
       </div>
     </div>
-        
+        </div>
     );
 };
 
-export default TodaysPlan;
+export default SavePlan;
